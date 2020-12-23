@@ -7,4 +7,5 @@ router.post('/', multer.single('file'), controller.post);
 router.post('/mult', multer.array('files'), controller.postMult);
 router.get('/', controller.getFiles);
 router.get('/:name', controller.download);
+
 module.exports = router;
