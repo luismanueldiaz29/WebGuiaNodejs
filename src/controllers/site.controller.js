@@ -1,18 +1,28 @@
 const site = require('../models/site');
+const gallery = require('../models/gallery');
 
 exports.get = (req, res) => {
-    site.findAll().then(site => {
-        res.json({site});
+    site.findAll({
+        include: {
+            model: gallery,
+            as: 'galleries'
+        }
+    }).then(site => {
+        res.json(site);
     });
 }
 
 exports.getId = (req, res) => {
     site.findAll({
+        include: {
+            model: gallery,
+            as: 'galleries'
+        },
         where: {
             id: req.params.id
         }
     }).then((site) => {
-        res.status(200).json({site});
+        res.status(200).json(site);
     });
 
     // site.findByPk(req.params.id).then.then((site) => {
@@ -25,9 +35,16 @@ exports.post = (req, res) => {
         name: req.body.name,
         description: req.body.description,
         infoInterest: req.body.infoInterest,
-        imgPath: req.body.imgPath
     }).then( site => {
-        res.status("200").json(site);
+        gallery.create({
+            nameImg: req.body.nameImg,
+            imgPath: req.body.imgPath
+        }).then(galleryRes => {
+            site.setGalleries(galleryRes).then(result => {
+                res.json(site)
+            })
+        });
+        // res.status("200").json(site);
     }).catch(error => {
         res.status("400").json(error);
     })
@@ -45,7 +62,9 @@ exports.update = (req, res) => {
         }
     }).then(result => {
         res.status(201).json({result});
-    });
+    }).catch(error => {
+        res.status("400").json(error);
+    })
 }
 
 exports.delete = (req, res) => {

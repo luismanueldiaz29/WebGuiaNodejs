@@ -34,19 +34,6 @@ site.init({
                 msg: "El campo de informacion de interes no puede ser nulo"
             }
         }
-    },
-    imgPath: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            notNull:{
-                msg: "EL campo no puese ser nulo"
-            },
-            len: {
-                args: [3, 255],
-                msg : "La url debe ser de 3 a 255 caracteres"
-            }
-        }
     }
 },
 {

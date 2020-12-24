@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 const siteRouter = require('./site.router.js')
 const uploadRouter = require('./upload.router');
+const galleryRouter = require('./gallery.router');
 
+//message at index
 router.get('/', (req, res) => {
     res.send(`
     <br><br>
@@ -16,8 +18,10 @@ router.get('/', (req, res) => {
     `);
 })
 
+//router at aplication
 module.exports = (app) => {
     app.use('/', router);
     app.use('/api/site', siteRouter);
+    app.use('/api/gellary', galleryRouter);
     app.use('/api/upload', uploadRouter);
 }

@@ -5,6 +5,9 @@ const cors = require('cors');
 const routers = require('./routers/index.router');
 const sequelize = require('./database/sequelize');
 
+//import models and relationship
+require('./models/associations');
+
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -21,7 +24,7 @@ routers(app);
 app.listen(PORT, () => {
     console.log(`App listening port on http://localhost:3000/`);
 
-    sequelize.sync().then(() =>{
+    sequelize.sync({force: false}).then(() =>{
         console.log('connetion on database')
     }).catch(error => {
         console.log('error => '+error);
