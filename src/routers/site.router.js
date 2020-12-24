@@ -7,6 +7,7 @@ const controller = require('../controllers/site.controller');
 router.get('/', controller.get);
 router.get('/:id', controller.getId);
 router.post('/', controller.post);
+router.post('/site/gallery', controller.postSiteGallery);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.delete);
 

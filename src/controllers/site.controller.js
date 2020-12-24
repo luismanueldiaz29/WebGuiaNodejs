@@ -24,29 +24,35 @@ exports.getId = (req, res) => {
     }).then((site) => {
         res.status(200).json(site);
     });
-
-    // site.findByPk(req.params.id).then.then((site) => {
-    //     res.status(200).json({site});
-    // });
 }
 
-exports.post = (req, res) => {
-    site.create({
+exports.postSiteGallery = async (req, res) => {
+    await site.create({
         name: req.body.name,
         description: req.body.description,
         infoInterest: req.body.infoInterest,
-    }).then( site => {
-        gallery.create({
+        galleries : {
             nameImg: req.body.nameImg,
             imgPath: req.body.imgPath
-        }).then(galleryRes => {
-            site.setGalleries(galleryRes).then(result => {
-                res.json(site)
-            })
-        });
-        // res.status("200").json(site);
+        }
+    },{
+        include: "galleries"
+    }).then( site => {
+        res.status(200).json(site)
     }).catch(error => {
         res.status("400").json(error);
+    })
+}
+
+exports.post = async (req, res) => {
+    await site.create({
+        name: req.body.name,
+        description: req.body.description,
+        infoInterest: req.body.infoInterest
+    }).then( site => {
+        res.status(200).json(site);
+    }).catch(error => {
+        res.status(400).json(error);
     })
 }
 

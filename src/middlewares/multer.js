@@ -4,10 +4,11 @@ const path = require('path');
 
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '../../upload'));
+    cb(null, path.join(__dirname, '../../uploads/images'));
   },
   filename: (req, file, cb) => {
-    cb(null, Date.now()+file.originalname);
+    // var cadena = file.mimetype.split('/'); //extraer la extencion
+    cb(null, Date.now()+path.extname(file.originalname));
   },
 });
 

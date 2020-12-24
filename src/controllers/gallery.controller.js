@@ -18,7 +18,6 @@ exports.getId = (req, res) => {
     })
 }
 
-
 exports.update = (req, res) => {
     gallery.update({
         nameImg: req.body.nameImg,

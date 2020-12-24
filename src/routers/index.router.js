@@ -22,6 +22,6 @@ router.get('/', (req, res) => {
 module.exports = (app) => {
     app.use('/', router);
     app.use('/api/site', siteRouter);
-    app.use('/api/gellary', galleryRouter);
+    app.use('/api/gallery', galleryRouter);
     app.use('/api/upload', uploadRouter);
 }

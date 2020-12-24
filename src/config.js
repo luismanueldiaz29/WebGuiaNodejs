@@ -1,8 +1,8 @@
 module.exports = {
     database: {
-        username: 'root',
-        password: 'root',
-        database: 'guiacesar',
-        host: 'localhost'
+        username: process.env.USERNAME,
+        password: process.env.PASSWORD,
+        database: process.env.DATABASE,
+        host: process.env.HOST
     }
 }
