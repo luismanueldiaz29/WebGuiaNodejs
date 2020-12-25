@@ -38,7 +38,7 @@ exports.getFiles = (req, res) =>{
     files.forEach((file) => {
       fileInfos.push({
         name: file,
-        url: 'http://localhost:3000/api/upload/' + file,
+        url: 'http://localhost:3000/api/upload/images/' + file,
       });
     });
 
@@ -49,7 +49,7 @@ exports.getFiles = (req, res) =>{
 exports.download = (req, res) => {
 
   const fileName = req.params.name;
-  const directoryPath = path.join(__dirname, '../../upload/');
+  const directoryPath = path.join(__dirname, '../../upload/images/');
   console.log(directoryPath);
   res.download(directoryPath + fileName, fileName, (err) => {
     if (err) {
