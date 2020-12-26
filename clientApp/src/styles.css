@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+.card{
+    -webkit-box-shadow: 2px 2px 5px #999;
+    -moz-box-shadow: 2px 2px 5px #999;
+    filter: shadow(color=#999999, direction=135, strength=2);
+}
+
+.navbar{
+    -webkit-box-shadow: 2px 2px 5px #999;
+    -moz-box-shadow: 2px 2px 5px #999;
+    filter: shadow(color=#999999, direction=135, strength=2);
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
