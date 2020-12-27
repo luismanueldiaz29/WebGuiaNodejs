@@ -14,12 +14,12 @@ export class AddSiteComponent implements OnInit {
   files : any;
   successfulMessage = '';
   site : Site;
+
   constructor(
-    private siteService : SiteService,  
-    
+    private siteService : SiteService
   ) { }
 
-  ngOnInit(){
+  ngOnInit(): void {
     this.site = {name:"", description: "", infoInterest: "", nameImg:"", imgPath:""}
   }
 
@@ -48,4 +48,5 @@ export class AddSiteComponent implements OnInit {
   onSubmit() {
 
   }
+
 }

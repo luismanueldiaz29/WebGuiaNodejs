@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from 'src/app/material/material';
 import { SiteService } from 'src/app/services/site.service';
 
 @Component({
@@ -8,7 +7,7 @@ import { SiteService } from 'src/app/services/site.service';
   styleUrls: ['./list-site.component.css']
 })
 export class ListSiteComponent implements OnInit {
-  
+
   sites : any;
 
   constructor(
