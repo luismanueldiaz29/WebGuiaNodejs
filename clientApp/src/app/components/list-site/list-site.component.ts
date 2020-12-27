@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MaterialModule } from 'src/app/material/material';
-import { site } from 'src/app/modules/site';
 import { SiteService } from 'src/app/services/site.service';
 
 @Component({

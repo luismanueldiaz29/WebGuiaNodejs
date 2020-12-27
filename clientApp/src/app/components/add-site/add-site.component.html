@@ -1,7 +1,7 @@
 <app-nav-bar-home></app-nav-bar-home>
 
 <div class="container">
-    <div class="card">
+    <div class="card mb-2">
         <div class="card-heard">
             <div class="card-panel bg-info border rounded mb-4">
                 <h4 class="text-center p-3 text-white">New site</h4>
@@ -9,8 +9,61 @@
         </div>
         <div class="card-body">
             
-            
+            <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="successfulMessage">
+                Galería registrada satisfactoriamente.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
 
+            <form #galleryForm="ngForm" (ngSubmit)="onSubmit(); galleryForm.reset()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="exampleInputText1">Nombre</label>
+                                    <input type="text" class="form-control" id="exampleInputText1" required [(ngModel)]="site.name" name="name" #name="ngModel">
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Descripción</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required [(ngModel)]="site.description" name="description" #description="ngModel"></textarea>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Informacion de interes</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required [(ngModel)]="site.infoInterest" name="infoInterest" #infoInterest="ngModel"></textarea>
+                                  </div>
+                                <div class="col-md-4">
+                                    <div class="form-group m-auto">
+                                    <label for="exampleFormControlFile1">Imagenes</label>
+                                    <input type="file" (change)="handleFileInput($event.target.files)" class="form-control-file" id="exampleFormControlFile1" multiple required accept="image/*" name="files" (change)="handleFileInput($event.target.files)">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-heard mx-auto">
+                                <div  style="width:250px;height:200px;">
+                                    <img [src]="imageUrl" id="exampleFormControlTextarea1">
+                                </div>
+                            </div>
+                            <div class="card-body text-center">
+                                <!-- <h5>Nombre del sitio:{{site.name}}</h5>
+                                
+                                <h6>Descripción</h6>
+                                {{site.description}}
+                                <h6>Informacion de interes</h6>
+                                {{site.infoInterest}} -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mt-5">
+                    <button type="submit" [disabled]="!galleryForm.form.valid" class="btn btn-primary mb-1">Guardar</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

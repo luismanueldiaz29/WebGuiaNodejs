@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Site } from 'src/app/modules/site';
+import { SiteService } from 'src/app/services/site.service';
 
 @Component({
   selector: 'app-add-site',
@@ -7,11 +9,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddSiteComponent implements OnInit {
 
-  constructor() { }
+  imageUrl = "../../../assets/default-image.png";
+  fileToUpload: any;
+  files : any;
+  successfulMessage = '';
+  site : Site;
+  constructor(
+    private siteService : SiteService,  
+    
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.site = {name:"", description: "", infoInterest: "", nameImg:"", imgPath:""}
   }
 
-  
+  handleFileInput(files: FileList) {
+    this.files = files;
 
+    //Show image preview
+    this.fileToUpload = files.item(0);
+
+    var reader = new FileReader();
+    reader.onload = (event:any) => {
+      this.imageUrl = event.target.result;
+    }
+    reader.readAsDataURL(this.fileToUpload);
+  }
+
+  post(){
+    this.siteService.post(this.site).subscribe(
+      siteRes => {
+        console.log(siteRes);
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+  onSubmit() {
+
+  }
 }

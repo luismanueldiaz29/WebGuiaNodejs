@@ -12,6 +12,7 @@ import { AddSiteComponent } from './components/add-site/add-site.component';
 import { ListSiteComponent } from './components/list-site/list-site.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MaterialModule } from './material/material';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MaterialModule    
+    MaterialModule, 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { site } from '../modules/site';
+import { Site } from '../modules/site';
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +13,16 @@ export class SiteService {
 
   constructor(private http : HttpClient) { }
 
-  get(): Observable<site[]>{
-    return this.http.get<site[]>(`${this.URL}/api/site`);
+  get(): Observable<Site[]>{
+    return this.http.get<Site[]>(`${this.URL}/api/site`);
   }
 
-  getId(id: number): Observable<site>{
-    return this.http.get<site>(`${this.URL}/api/site/${id}`);
+  getId(id: number): Observable<Site>{
+    return this.http.get<Site>(`${this.URL}/api/site/${id}`);
   }
 
-  post(site: site): Observable<site>{
-    return this.http.post<site>(`${this.URL}/api/site/gallery`, site);
+  post(site: Site): Observable<Site>{
+    return this.http.post<Site>(`${this.URL}/api/site/gallery`, site);
   }
 
   // update(site: site, id: number): Observable<site>{
