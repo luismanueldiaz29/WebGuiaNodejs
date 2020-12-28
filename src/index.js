@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const routers = require('./routers/index.router');
 const sequelize = require('./database/sequelize');
+const path = require('path');
 
 //import models and relationship
 require('./models/associations');
@@ -19,7 +20,11 @@ const PORT = process.env.PORT || 3000;
 //middlewares
 app.use('dev', morgan);
 app.use(bodyParser.json());
-app.use(cors())
+app.use(cors());
+
+//Declaro la ruta en donde estaran los archivos estaticos
+app.use(express.static(path.join(__dirname,'../uploads')));//Directorio para archivos staticos
+app.use('/images',express.static(path.join(__dirname,'../uploads/images')));//Directorio de imagenes
 
 //routers
 routers(app);

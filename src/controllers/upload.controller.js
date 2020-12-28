@@ -3,7 +3,7 @@ const path = require('path');
 
 exports.post = (req, res) => {
   const file = req.file;
-  console.log(file.path);
+  // console.log(file.path);
   if (!file) {
     const error = new Error('No File')
     res.status(400).json(error)

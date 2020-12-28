@@ -16,9 +16,9 @@
                 </button>
             </div>
 
-            <form #galleryForm="ngForm" (ngSubmit)="onSubmit(); galleryForm.reset()">
+            <form #galleryForm="ngForm" (ngSubmit)="onSubmit();">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <div class="card">
                             <div class="card-body">
                                 <div class="form-group">
@@ -36,32 +36,34 @@
                                 <div class="col-md-4">
                                     <div class="form-group m-auto">
                                     <label for="exampleFormControlFile1">Imagenes</label>
-                                    <input type="file" (change)="handleFileInput($event.target.files)" class="form-control-file" id="exampleFormControlFile1" multiple required accept="image/*" name="files" (change)="handleFileInput($event.target.files)">
+                                    <input type="file" (change)="handleFileInput($event)" class="form-control-file" id="exampleFormControlFile1" required accept="image/*" name="files">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-5">
                         <div class="card">
                             <div class="card-heard mx-auto">
-                                <div  style="width:250px;height:200px;">
-                                    <img [src]="imageUrl" id="exampleFormControlTextarea1">
+                                <div>
+                                    <img [src]="imageUrl" id="exampleFormControlTextarea1"  style="width:250px;height:200px;">>
                                 </div>
                             </div>
                             <div class="card-body text-center">
-                                <!-- <h5>Nombre del sitio:{{site.name}}</h5>
-                                
+                                <h5>Nombre del sitio</h5>
+                                <span class="text-muted">{{site.name}}</span>
+
                                 <h6>Descripción</h6>
-                                {{site.description}}
+                                <span class="text-muted">{{site.description}}</span>
+                                
                                 <h6>Informacion de interes</h6>
-                                {{site.infoInterest}} -->
+                                <span class="text-muted">{{site.infoInterest}}</span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-center mt-5">
-                    <button type="submit" [disabled]="!galleryForm.form.valid" class="btn btn-primary mb-1">Guardar</button>
+                    <button type="submit" class="btn btn-primary mb-1">Guardar</button>
                 </div>
             </form>
         </div>

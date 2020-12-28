@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Site } from '../modules/site';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class SiteService {
 
-  URL = environment.URL;
+  private URL = environment.URL;
 
   constructor(private http : HttpClient) { }
 

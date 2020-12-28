@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-md-4" *ngFor="let site of sites;">
           <div class="card mb-4">
-            <img src="{{site.imgPath}}" class="card-img-top" alt="{{site.imgPath}}">
+            <img src={{Url}}{{site.nameImg}} alt={{site.nameImg}}>
             <div class="card-body">
               <h5 class="card-title text-center">{{site.name}}</h5>
               <h6>Descripción</h6>
