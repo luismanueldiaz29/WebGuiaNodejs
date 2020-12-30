@@ -12,6 +12,7 @@ const path = require('path');
 
 //import models and relationship
 require('./models/associations');
+require('./models/user');
 
 const app = express();
 

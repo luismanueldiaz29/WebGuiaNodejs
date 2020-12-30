@@ -3,6 +3,8 @@ const router = express.Router();
 const siteRouter = require('./site.router.js')
 const uploadRouter = require('./upload.router');
 const galleryRouter = require('./gallery.router');
+const authRouter = require('./auth.router') 
+const userRouter = require('./user.router');
 
 //message at index
 router.get('/', (req, res) => {
@@ -24,4 +26,6 @@ module.exports = (app) => {
     app.use('/api/site', siteRouter);
     app.use('/api/gallery', galleryRouter);
     app.use('/api/upload', uploadRouter);
+    app.use('/api/auth', authRouter);
+    app.use('/api/user', userRouter);   
 }
