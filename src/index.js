@@ -34,7 +34,7 @@ routers(app);
 app.listen(PORT, () => {
     console.log(`App listening port on http://localhost:3000/`);
 
-    sequelize.sync({force: false}).then(() =>{
+    sequelize.sync({force: true}).then(() =>{
         console.log('connetion on database')
     }).catch(error => {
         console.log('error => '+error);
