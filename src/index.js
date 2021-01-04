@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 //Declaro la ruta en donde estaran los archivos estaticos
-app.use(express.static(path.join(__dirname,'../uploads')));//Directorio para archivos staticos
+app.use(express.static(path.join(__dirname,'../uploads/documents')));//Directorio para archivos staticos
 app.use('/images',express.static(path.join(__dirname,'../uploads/images')));//Directorio de imagenes
 
 //routers
@@ -34,7 +34,7 @@ routers(app);
 app.listen(PORT, () => {
     console.log(`App listening port on http://localhost:3000/`);
 
-    sequelize.sync({force: true}).then(() =>{
+    sequelize.sync({force: false}).then(() =>{
         console.log('connetion on database')
     }).catch(error => {
         console.log('error => '+error);

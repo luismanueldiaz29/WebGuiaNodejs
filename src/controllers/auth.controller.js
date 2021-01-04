@@ -1,5 +1,7 @@
 const user = require('../models/user');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const config = require('../config/auth');
 
 exports.login = (req, res) => {
 
@@ -19,7 +21,10 @@ exports.login = (req, res) => {
                 res.status(400).json('No se encontro el usuario')
             }else{
                 if(bcrypt.compareSync(password, user.password)){
-                    res.status(200).json(user);
+
+                    const token = jwt.sign({id: user.id, username: user.email}, config.keySecret, {expiresIn: config.expires}) 
+                    res.status(200).json({message: 'OK', token});
+
                 }else{
                     res.status(401).json('Contraceña incorrecta')
                 }
@@ -28,5 +33,5 @@ exports.login = (req, res) => {
     ).catch(error => {
         res.status(400).json(error)
     })
-
 }
+

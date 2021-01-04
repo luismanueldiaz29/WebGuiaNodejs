@@ -67,7 +67,7 @@ exports.update = (req, res) => {
             id: req.params.id
         }
     }).then(result => {
-        res.status(201).json({result});
+        res.status(201).json(result);
     }).catch(error => {
         res.status("400").json(error);
     })
@@ -79,7 +79,7 @@ exports.delete = (req, res) => {
             id: req.params.id
         }
     }).then(result => {
-        res.json({result});
+        res.json(result);
     });
 }
 
