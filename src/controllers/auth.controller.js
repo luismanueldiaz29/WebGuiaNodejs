@@ -23,7 +23,7 @@ exports.login = (req, res) => {
                 if(bcrypt.compareSync(password, user.password)){
 
                     const token = jwt.sign({id: user.id, username: user.email}, config.keySecret, {expiresIn: config.expires}) 
-                    res.status(200).json({message: 'OK', token});
+                    res.status(200).json({message: 'OK', id: user.id, username: user.email, token});
 
                 }else{
                     res.status(401).json('Contraceña incorrecta')
