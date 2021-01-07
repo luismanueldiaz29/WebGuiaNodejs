@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Site } from 'src/app/modules/site';
+import { Site } from 'src/app/models/site';
 import { SiteService } from 'src/app/services/site.service';
 import { UpdateService } from 'src/app/services/update.service';
 
