@@ -10,21 +10,41 @@
                 <h1 class="card-title">Login</h1>
             </div>
             <div class="card-body" style="display: block; margin: 0 auto;">
-                <div class="content">
-                    <div class="row">
-                        <div class="form-group">
-                            <label>User</label>
-                            <input type="text" class="form-control" placeholder="user">
+                <form #loginForm="ngForm" (ngSubmit)="onLogin()">
+                    <div class="content">
+                        <div class="row">
+                            <div class="form-group">
+
+                                <label>User</label>
+                                <input 
+                                    type="text"
+                                    class="form-control" 
+                                    placeholder="user"
+                                    name="username"
+                                    [(ngModel)]="userLogin.username"
+                                    #usermane="ngModel"
+                                    required>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group">
+
+                                <label>Password</label>
+                                <input 
+                                    type="password" 
+                                    class="form-control" 
+                                    placeholder="password"
+                                    name="password"
+                                    #password="ngModel"
+                                    [(ngModel)]="userLogin.password"
+                                    required>
+
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="text" class="form-control" placeholder="password">
-                        </div>
-                    </div>
-                </div>
-                <button class="btn btn-success mt-3" routerLink="/home">Ingresar</button>
+                    <button class="btn btn-success mt-3" type="submit">Ingresar</button>
+                </form>
             </div>
         </div>
     </div>
