@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Site } from 'src/app/models/site';
 import { SiteService } from 'src/app/services/site.service';
 import { UpdateService } from 'src/app/services/update.service';
@@ -9,7 +10,9 @@ import { UpdateService } from 'src/app/services/update.service';
   templateUrl: './add-site.component.html',
   styleUrls: ['./add-site.component.css']
 })
-export class AddSiteComponent implements OnInit {
+export class AddSiteComponent implements OnInit, OnDestroy {
+
+  private subcriptionSite : Subscription = new Subscription();
 
   imageUrl = "../../../assets/default-image.png";
   fileToUpload: any;
@@ -27,6 +30,10 @@ export class AddSiteComponent implements OnInit {
 
   ngOnInit(): void {
     this.init();
+  }
+
+  ngOnDestroy(): void {
+    this.subcriptionSite.unsubscribe();
   }
 
   init(){
@@ -53,13 +60,15 @@ export class AddSiteComponent implements OnInit {
   }
 
   post(){
-    console.log(this.sitePost)
-    this.siteService.post(this.sitePost).subscribe(
-      siteRes => {
-        console.log(siteRes);
-      }, error => {
-        console.log(error);
-      }
+    // console.log(this.sitePost)
+    this.subcriptionSite.add(
+      this.siteService.post(this.sitePost).subscribe(
+        siteRes => {
+          console.log(siteRes);
+        }, error => {
+          console.log(error);
+        }
+      )
     );
   }
   onSubmit() {
