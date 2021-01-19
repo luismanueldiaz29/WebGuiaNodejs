@@ -14,14 +14,21 @@ dowload -> git clone https://github.com/luismanueldiaz29/WebGuiaNodejs
 
 # config batabase
 
+
 USERNAME=
+<br>
 PASSWORD=
+<br>
 DATABASE=
+<br>
 HOST=
 
 # config auth
 
 ROUNDS=8
+<br>
 AUTH_SECRET=
+<br>
 AUTH_EXPIRES=1h
+<br>
 AUTH_ROUNDS=10
